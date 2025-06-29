@@ -64,7 +64,7 @@ Verify new inbound rule exists <br/>
 ### 🔹 Splunk Forwarder Setup (ACIDM01)
 
 - Installed Splunk Universal Forwarder with domain credentials
-- Forwarded logs to `192.168.0.3` on ports `8089` and `9997`
+- Forwarded logs to Windows 11 workstation acting as the Splunk Enterprise server on ports `8089` and `9997`
 - Selected Windows Event Log sources
 
 
