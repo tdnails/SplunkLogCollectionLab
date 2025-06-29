@@ -41,9 +41,18 @@ This lab demonstrates the full setup and configuration of **Splunk Enterprise** 
 - Created a new Server Class for ACIDM01
 - Selected and indexed Application, Security, and System logs
 
-![Port Config](./splunklogcollect1.png)
-![Firewall Rules](./splunklogcollect2.png)
-![Inbound Rule Added](./splunklogcollect3.png)
+<p align="center">
+Open receiving port 9997 in Splunk: <br/>
+<img src="images/splunklogcollect1.png" height="80%" width="80%" alt="Splunk Receiving Port"/>
+<br /><br />
+
+Configure Windows Firewall inbound rule: <br/>
+<img src="images/splunklogcollect2.png" height="80%" width="80%" alt="Firewall Inbound Rule"/>
+<br /><br />
+
+Verify new inbound rule exists: <br/>
+<img src="images/splunklogcollect3.png" height="80%" width="80%" alt="Firewall Rule Check"/>
+</p>
 
 ---
 
@@ -53,10 +62,23 @@ This lab demonstrates the full setup and configuration of **Splunk Enterprise** 
 - Forwarded logs to `192.168.0.3` on ports `8089` and `9997`
 - Selected Windows Event Log sources
 
-![Select Forwarder](./splunklogcollect4.png)
-![Event Log Source](./splunklogcollect5.png)
-![Review Config](./splunklogcollect6.png)
-![Log Search Results](./splunklogcollect7.png)
+<p align="center">
+Select the Windows host forwarder: <br/>
+<img src="images/splunklogcollect4.png" height="80%" width="80%" alt="Select Host"/>
+<br /><br />
+
+Choose Event Log sources: <br/>
+<img src="images/splunklogcollect5.png" height="80%" width="80%" alt="Select Event Logs"/>
+<br /><br />
+
+Review Splunk data input configuration: <br/>
+<img src="images/splunklogcollect6.png" height="80%" width="80%" alt="Review Settings"/>
+<br /><br />
+
+View log events in Splunk Search: <br/>
+<img src="images/splunklogcollect7.png" height="80%" width="80%" alt="Search Results"/>
+</p>
+
 
 ---
 
@@ -66,13 +88,5 @@ Successfully collected and visualized over **25,000 events** from ACIDM01. Event
 
 ---
 
-## ✍️ Lessons Learned
 
-- Importance of firewall rules when working with agent-based log forwarding
-- How Splunk uses server classes and forwarders to handle input data
-- How to parse and analyze Windows Event logs using Splunk Search
-
----
-
-## 📁 Folder Structure
 
