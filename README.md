@@ -1,6 +1,6 @@
 # 🔍 Splunk Enterprise Log Collection Lab
 
-This lab demonstrates the full setup and configuration of **Splunk Enterprise** to collect and analyze Windows event logs in a simulated domain environment. The goal was to create a centralized log monitoring solution for multiple domain devices using a Universal Forwarder and Splunk's web interface.
+This lab demonstrates the setup and configuration of **Splunk Enterprise** to collect and analyze Windows event logs in a simulated domain environment. The goal was to create a centralized log monitoring solution for multiple domain devices using a Universal Forwarder and Splunk's web interface.
 
 ## 🧠 Lab Objectives
 
@@ -17,16 +17,15 @@ This lab demonstrates the full setup and configuration of **Splunk Enterprise** 
 
 | Device Name | OS                  | Role                      |
 |-------------|---------------------|---------------------------|
-| ACIWIN11    | Windows 11          | Domain Member Workstation            |
-| ACIDM01     | Windows Server 2022 | Domain Member Server    |
-| ACIDC01     | Windows Server 2022 | Domain Controller         |
+| ACIWIN11    | Windows 11          | Domain Member Workstation - Used by end-users to log in with domain credentials and access network resources.           |
+| ACIDM01     | Windows Server 2022 | Domain Member Server - A server joined to the domain that does not control the domain. Hosts services like file sharing, print services, web servers, applications, etc.   |
+| ACIDC01     | Windows Server 2022 | Domain Controller - A server that manages and enforces security policies and authentication in a domain. Stores the Active Directory (AD) database (user accounts, groups, computers).        |
 
 ---
 
 ## 📦 Tools Used
 
 - **Splunk Enterprise 9.0.3**
-- **Splunk Universal Forwarder 9.0.3**
 - Windows Defender Firewall
 - Microsoft Edge
 
@@ -41,18 +40,24 @@ This lab demonstrates the full setup and configuration of **Splunk Enterprise** 
 - Created a new Server Class for ACIDM01
 - Selected and indexed Application, Security, and System logs
 
+
+
 <p align="center">
-Open receiving port 9997 in Splunk: <br/>
-<img src="images/splunklogcollect1.png" height="80%" width="80%" alt="Splunk Receiving Port"/>
-<br /><br />
+Open receiving port 9997 in Splunk <br/>
 
-Configure Windows Firewall inbound rule: <br/>
-<img src="images/splunklogcollect2.png" height="80%" width="80%" alt="Firewall Inbound Rule"/>
-<br /><br />
+![Port Config](./splunklogcollect1.png)
 
-Verify new inbound rule exists: <br/>
-<img src="images/splunklogcollect3.png" height="80%" width="80%" alt="Firewall Rule Check"/>
-</p>
+
+<p align="center">
+Configure Windows Firewall inbound rule on workstation <br/>
+
+![Firewall Rules](./splunklogcollect2.png)
+
+
+<p align="center">
+Verify new inbound rule exists <br/>
+
+![Inbound Rule Added](./splunklogcollect3.png)
 
 ---
 
@@ -62,29 +67,41 @@ Verify new inbound rule exists: <br/>
 - Forwarded logs to `192.168.0.3` on ports `8089` and `9997`
 - Selected Windows Event Log sources
 
+
 <p align="center">
-Select the Windows host forwarder: <br/>
-<img src="images/splunklogcollect4.png" height="80%" width="80%" alt="Select Host"/>
-<br /><br />
+Select the Windows host forwarder<br/>
 
-Choose Event Log sources: <br/>
-<img src="images/splunklogcollect5.png" height="80%" width="80%" alt="Select Event Logs"/>
-<br /><br />
+![Select Forwarder](./splunklogcollect4.png)
 
-Review Splunk data input configuration: <br/>
-<img src="images/splunklogcollect6.png" height="80%" width="80%" alt="Review Settings"/>
-<br /><br />
 
-View log events in Splunk Search: <br/>
-<img src="images/splunklogcollect7.png" height="80%" width="80%" alt="Search Results"/>
-</p>
+<p align="center">
+Choose Event Log source <br/>
+  
+![Event Log Source](./splunklogcollect5.png)
+
+
+<p align="center">
+Review Splunk data input config <br/>
+  
+![Review Config](./splunklogcollect6.png)
+
+
+<p align="center">
+View log events in Splunk Search <br/>
+  
+![Log Search Results](./splunklogcollect7.png)
+
 
 
 ---
 
 ## 📊 Results
 
-Successfully collected and visualized over **25,000 events** from ACIDM01. Events from all three categories (Application, Security, System) were searchable in Splunk Web.
+Successfully collected and visualized over 25,000 Windows Event Logs from the domain member server ACIDM01 using Splunk Web. Events from all three key categories—Application, Security, and System—were searchable and well-organized within the Splunk interface.
+
+Log forwarding was configured using the Splunk Universal Forwarder installed on ACIDM01 (Windows Server 2022). This forwarder transmitted logs to the central Splunk Enterprise server running on ACIWIN11 (Windows 11 Domain Member Workstation).
+
+The Splunk instance on ACIWIN11 was set up to receive data on port 9997, with appropriate firewall rules opened for both ports 9997 and 8089 to ensure reliable communication and log ingestion.
 
 ---
 
