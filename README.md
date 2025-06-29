@@ -1,6 +1,6 @@
 # 🔍 Splunk Enterprise Log Collection Lab
 
-This lab demonstrates the setup and configuration of **Splunk Enterprise** to collect and analyze Windows event logs in a simulated domain environment. The goal was to create a centralized log monitoring solution for multiple domain devices using a Universal Forwarder and Splunk's web interface.
+This lab demonstrates a brief setup and configuration of **Splunk Enterprise** to collect and analyze Windows event logs in a simulated domain environment. The goal was to create a centralized log monitoring solution for multiple domain devices using a Universal Forwarder and Splunk's web interface.
 
 ## 🧠 Lab Objectives
 
